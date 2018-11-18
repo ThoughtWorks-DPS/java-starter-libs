@@ -30,7 +30,7 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
         
       # run tests!
-      - run: ./gradlew test
+      - run: ./gradlew build
       
       # publish if successful
       - run: ./gradlew publish
