@@ -1,0 +1,28 @@
+buildscript {
+
+}
+
+group ="io.twdps.starter.errors"
+version = "${baseVersion}"
+
+jar {
+    baseName = project.name;
+    version = "${baseVersion}"
+}
+
+//checkstyle {
+//    toolVersion = "8.10.1"
+//    ignoreFailures = false
+//    maxWarnings = 0
+//    maxErrors = 0
+//    sourceSets = [sourceSets.main, sourceSets.test]
+//    reportsDir = file("$project.buildDir/reports/checkstyle")
+//}
+//
+//pmd {
+//    toolVersion = "6.4.0"
+//    ignoreFailures = false
+//    sourceSets = [sourceSets.main]
+//    reportsDir = file("$project.buildDir/reports/pmd")
+//    ruleSets = ["java-basic", "java-braces"]
+//}

@@ -1,0 +1,66 @@
+
+group ="io.twdps.starter.logging"
+version = "${baseVersion}"
+
+jar {
+    baseName = project.name;
+    version = "${baseVersion}"
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-aop")
+//    compile("org.projectlombok:lombok:${lombokVersion}")
+    compile("org.slf4j:slf4j-api:${slf4jVersion}")
+    testCompile("org.apache.logging.log4j:log4j-slf4j-impl:2.8.2")
+    testCompile("org.apache.logging.log4j:log4j-core:2.8.2")
+    testCompile("org.apache.logging.log4j:log4j-api:2.8.2")
+    testCompile("org.apache.logging.log4j:log4j-jcl:2.8.2")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+    testCompile("org.hamcrest:java-hamcrest:2.0.0.0")
+}
+
+configurations {
+    all*.exclude module : "spring-boot-starter-logging"
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
+    }
+}
+//
+//checkstyle {
+//    toolVersion = "8.10.1"
+//    ignoreFailures = false
+//    maxWarnings = 0
+//    maxErrors = 0
+//    sourceSets = [sourceSets.main, sourceSets.test]
+//    reportsDir = file("$project.buildDir/reports/checkstyle")
+//}
+//
+//pmd {
+//    toolVersion = "6.4.0"
+//    ignoreFailures = false
+//    sourceSets = [sourceSets.main]
+//    reportsDir = file("$project.buildDir/reports/pmd")
+//    ruleSets = ["java-basic", "java-braces"]
+//}
+
+//publishing {
+//    publications {
+//        mavenJava(MavenPublication) {
+//            artifactId = "logger"
+//            from components.java
+//        }
+//    }
+//    repositories {
+//        maven {
+//            credentials {
+//                username project.hasProperty("mavenUsername") ? project.mavenUsername : "undefined"
+//                password project.hasProperty("mavenPassword") ? project.mavenPassword : "undefined"
+//            }
+//            url = project.hasProperty("mavenUrl") ? project.mavenUrl : "undefined"
+//        }
+//    }
+//}

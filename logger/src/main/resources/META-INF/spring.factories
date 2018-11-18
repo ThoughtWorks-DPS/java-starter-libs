@@ -1,0 +1,2 @@
+# Auto Configuration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=io.twdps.starter.logging.logger.LoggingAspect
