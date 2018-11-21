@@ -7,10 +7,17 @@ jar {
     version = "${baseVersion}"
 }
 
+publishing.publications {
+    mavenJava(MavenPublication) {
+        groupId = project.group
+        artifactId = project.name
+        artifact jar.archivePath
+    }
+}
+
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-aop")
-//    compile("org.projectlombok:lombok:${lombokVersion}")
     compile("org.slf4j:slf4j-api:${slf4jVersion}")
     testCompile("org.apache.logging.log4j:log4j-slf4j-impl:2.8.2")
     testCompile("org.apache.logging.log4j:log4j-core:2.8.2")

@@ -39,24 +39,12 @@ subprojects {
         springBootVersion = "2.0.6.RELEASE"
         slf4jVersion = "1.7.25"
         junitVersion = "5.2.0"
-        lombokVersion = "1.16.12"
+        lombokVersion = "1.18.0"
     }
 
     repositories {
         mavenLocal()
         mavenCentral()
-        maven {
-            url "s3://maven.k8starter.twdps.io/releases"
-            authentication {
-                awsIm(AwsImAuthentication) // load from EC2 role or env var
-            }
-        }
-        maven {
-            url "s3://maven.k8starter.twdps.io/snapshots"
-            authentication {
-                awsIm(AwsImAuthentication) // load from EC2 role or env var
-            }
-        }
     }
 
     apply plugin: "java"
@@ -66,8 +54,6 @@ subprojects {
     apply plugin: 'maven-publish'
 //    apply plugin: "pmd"
 //    apply plugin: "checkstyle"
-
-
 
     dependencies {
         compile "org.projectlombok:lombok:${lombokVersion}"
@@ -79,25 +65,15 @@ subprojects {
         expand(project.properties)
     }
 
-
-    publishing.publications {
-            mavenJava(MavenPublication) {
-                artifactId = project.name
-                artifact jar.archivePath
-            }
-        }
-
     publishing.repositories {
-            maven {
-                url "s3://maven.k8starter.twdps.io/${project.version.endsWith('-SNAPSHOT') ? 'snapshot' : 'release'}"
-                authentication {
-                    awsIm(AwsImAuthentication) // load from EC2 role or env var
-                }
+        mavenLocal()
+        maven {
+            url "s3://maven.k8starter.twdps.io/${project.version.endsWith('-SNAPSHOT') ? 'snapshot' : 'release'}"
+            authentication {
+                awsIm(AwsImAuthentication) // load from EC2 role or env var
             }
         }
-
-
-
+    }
 
 //    checkstyle {
 //        toolVersion = "8.10.1"
