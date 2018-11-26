@@ -77,16 +77,16 @@ class DefaultExceptionHandlerTest {
     assertEquals(expected, actual);
   }
 
-  @Test
-  void shouldMapOdataClientExceptionToInternalServerErrorWithTypeAndDescriptionAndNoErrorDetails() {
-    when(errorMessageMap.getProperty("internalErrorMessage")).thenReturn("code|message");
-    ErrorsContext expected = ErrorsContext.builder()
-        .errors(createError("code", "message", newArrayList())).build();
-
-    ErrorsContext actual = defaultExceptionHandler.handleOdataClientException();
-
-    assertEquals(expected, actual);
-  }
+//  @Test
+//  void shouldMapOdataClientExceptionToInternalServerErrorWithTypeAndDescriptionAndNoErrorDetails() {
+//    when(errorMessageMap.getProperty("internalErrorMessage")).thenReturn("code|message");
+//    ErrorsContext expected = ErrorsContext.builder()
+//        .errors(createError("code", "message", newArrayList())).build();
+//
+//    ErrorsContext actual = defaultExceptionHandler.handleOdataClientException();
+//
+//    assertEquals(expected, actual);
+//  }
 
   @Test
   void shouldMapConstraintViolationExceptionToErrorWithViolationTypeViolationDescriptionAndErrorDetailsAboutTheFieldThatHasValidationErrors() {
